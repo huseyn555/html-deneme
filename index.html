@@ -1,19 +1,110 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basit Bir Web Sitesi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini TikTok</title>
+  <style>
+    /* Sayfa ve video stil ayarları */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .video-container {
+      width: 100%;
+      max-width: 400px;
+      height: 100%;
+      position: relative;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Kontroller ve beğen butonu */
+    .controls {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+
+    .like-btn {
+      background-color: #ff2d55;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5em;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .next-btn {
+      background-color: #1da1f2;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5em;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      outline: none;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Hoşgeldiniz!</h1>
-    </header>
-    <main>
-        <p>Bu, basit bir çevrimiçi site örneğidir.</p>
-    </main>
-    <footer>
-        <p>Telif Hakkı © 2024</p>
-    </footer>
+  <div class="video-container">
+    <video id="video-player" autoplay loop muted>
+      <source src="video1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="controls">
+      <button class="like-btn" onclick="likeVideo()">❤️</button>
+      <button class="next-btn" onclick="nextVideo()">➡️</button>
+    </div>
+  </div>
+
+  <script>
+    // Videolar listesi
+    const videos = ["video1.mp4", "video2.mp4", "video3.mp4"];
+    let currentVideoIndex = 0;
+
+    const videoPlayer = document.getElementById('video-player');
+
+    // Sonraki videoya geçiş fonksiyonu
+    function nextVideo() {
+      currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+      videoPlayer.src = videos[currentVideoIndex];
+      videoPlayer.play();
+    }
+
+    // Beğen düğmesi fonksiyonu
+    function likeVideo() {
+      alert("Bu videoyu beğendiniz!");
+    }
+  </script>
 </body>
 </html>
